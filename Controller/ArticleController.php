@@ -36,7 +36,7 @@ class ArticleController
                 $articles[] = new Article($rawArticle["title"], $rawArticle["description"], $rawArticle["publish_date"]); // Change to objects
             }
 
-            require "Views/overview.php"; // load view
+            require "view/home.php"; // load view
 
         } catch (PDOException $err) {
             throw new RuntimeException($err);

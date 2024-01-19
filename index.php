@@ -23,7 +23,7 @@ switch ($page) {
         // This is shorthand for:
         // $articleController = new ArticleController;
         // $articleController->index();
-        (new ArticleController())->index();
+        (new ArticleController($databaseManager))->index();
         break;
     case 'articles-show':
     // TODO: detail page
