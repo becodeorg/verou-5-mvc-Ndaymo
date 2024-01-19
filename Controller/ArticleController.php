@@ -31,26 +31,26 @@ class ArticleController
             $query = "SELECT * FROM articles";
             $statement = $this->databaseManager->connection->query($query);
             $rawData = $statement->fetchAll(); // Fetches as array
-
+            $articles = [];
             foreach ($rawData as $rawArticle) {
                 $articles[] = new Article($rawArticle["title"], $rawArticle["description"], $rawArticle["publish_date"]); // Change to objects
             }
 
-            require "view/home.php"; // load view
+            return $articles;
 
         } catch (PDOException $err) {
             throw new RuntimeException($err);
         }
 
-        $rawArticles = [];
+        //$rawArticles = [];
 
-        $articles = [];
-        foreach ($rawArticles as $rawArticle) {
-            // We are converting an article from a "dumb" array to a much more flexible class
-            $articles[] = new Article($rawArticle['title'], $rawArticle['description'], $rawArticle['publish_date']);
-        }
 
-        return $articles;
+        // foreach ($rawArticles as $rawArticle) {
+        //     // We are converting an article from a "dumb" array to a much more flexible class
+        //     $articles[] = new Article($rawArticle['title'], $rawArticle['description'], $rawArticle['publish_date']);
+        // }
+
+
     }
 
     public function show()
